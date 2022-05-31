@@ -2,7 +2,7 @@ import numpy as np
 import colorsys
 
 
-def rgb(arr):
+def hls(arr):
     def rgb_driver(pixel):
         r, g, b = pixel
         r = r / 255
@@ -14,7 +14,7 @@ def rgb(arr):
         arr[num] = rgb_driver(arr[num])
 
 
-def hls(arr):
+def rgb(arr):
     def hls_driver(pixel):
         h, l, s = pixel
         r, g, b = colorsys.hls_to_rgb(h, l, s)

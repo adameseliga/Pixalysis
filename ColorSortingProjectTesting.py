@@ -1,6 +1,8 @@
 from PIL import Image
 import numpy as np
 import colorsys
+import onedimension
+import pixelconvert
 import sys
 import random
 
@@ -117,21 +119,18 @@ color_array = np.array(pixel_map, dtype=float)
 # print(color_array)
 # print()
 
-for i in range(len(color_array)):
-    color_array[i] = hls_pixelizer(color_array[i])
+pixelconvert.hls(color_array)
 
 print("HLS: ")
 # print(color_array)
 # print()
 
-for n in range(width):
-    color_merge_sort(color_array[n*width:(n+1)*width])
+onedimension.mergesort(color_array, 0) #n*width:(n+1)*width
 
 print("Sorted: ")
 # print(color_array)
 # print()
-for i in range(len(color_array)):
-    color_array[i] = rgb_pixelizer(color_array[i])
+pixelconvert.rgb(color_array)
 
 print("Output : ")
 # print(color_array)
