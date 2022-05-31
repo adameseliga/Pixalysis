@@ -7,69 +7,6 @@ import sys
 import random
 
 
-def color_insertion_sort(arr):
-    # Traverse through 1 to len(arr)
-    for i in range(1, len(arr)):
-
-        key = arr[i][0]
-
-        # Move elements of arr[0..i-1], that are
-        # greater than key, to one position ahead
-        # of their current position
-        j = i - 1
-        while j >= 0 and key < arr[j][0]:
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j + 1] = key
-
-
-def color_insertion_sort_recursive(arr, n):
-    # base case
-    if n <= 1:
-        return
-
-    color_insertion_sort_recursive(arr, n - 1)
-    last = arr[n - 1]
-    j = n - 2
-
-    # Move elements of arr[0..i-1], that are
-    # greater than key, to one position ahead
-    # of their current position
-    while (j >= 0 and arr[j][0] > last[0]):
-        arr[j + 1] = arr[j]
-        j = j - 1
-
-    arr[j + 1] = last
-def color_merge_sort(arr): #WIP
-    if len(arr) > 1:
-        mid = len(arr) // 2
-
-        L = np.array(arr[:mid])
-        R = np.array(arr[mid:])
-
-        color_merge_sort(L)
-        color_merge_sort(R)
-
-        i = j = k = 0
-
-        while i < len(L) and j < len(R):
-            if L[i][0] < R[j][0]:
-                arr[k] = L[i]
-                i += 1
-            else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
-
-
 def color_bubble_sort(arr):
     for i in arr:
         for j in range(len(arr) - 1):
@@ -77,30 +14,6 @@ def color_bubble_sort(arr):
                 temp = arr[j + 1]
                 arr[j + 1] = arr[j]
                 arr[j] = temp
-
-
-def md_sort(md_arr, length):
-    for i in range(length):
-        color_merge_sort(md_arr)
-    return md_arr
-
-
-def hls_pixelizer(rgb_pixel):
-    r, g, b = rgb_pixel
-    r = r / 255
-    g = g / 255
-    b = b / 255
-    rgb_pixel = colorsys.rgb_to_hls(r, g, b)
-    return rgb_pixel
-
-
-def rgb_pixelizer(hls_pixel):
-    h, l, s = hls_pixel
-    r, g, b = colorsys.hls_to_rgb(h, l, s)
-    r = (r * 255).astype(np.uint8)
-    g = (g * 255).astype(np.uint8)
-    b = (b * 255).astype(np.uint8)
-    return [r, g, b]
 
 
 original_image = Image.open("randcol.png")
@@ -125,7 +38,7 @@ print("HLS: ")
 # print(color_array)
 # print()
 
-onedimension.mergesort(color_array, 0) #n*width:(n+1)*width
+onedimension.bubblesort(color_array, 0) #n*width:(n+1)*width
 
 print("Sorted: ")
 # print(color_array)
@@ -148,5 +61,5 @@ color_array = color_array.reshape(width, height, 3)
 # print()
 
 img = Image.fromarray(color_array, 'RGB')
-img.save('colorsort9.jpg')
+img.save('colorsort10.jpg')
 img.show()
