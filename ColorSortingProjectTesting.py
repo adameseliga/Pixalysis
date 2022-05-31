@@ -1,8 +1,6 @@
 from PIL import Image
 import numpy as np
 import colorsys
-import pixelconvert
-import onedimension
 import sys
 import random
 
@@ -40,6 +38,35 @@ def color_insertion_sort_recursive(arr, n):
         j = j - 1
 
     arr[j + 1] = last
+def color_merge_sort(arr): #WIP
+    if len(arr) > 1:
+        mid = len(arr) // 2
+
+        L = np.array(arr[:mid])
+        R = np.array(arr[mid:])
+
+        color_merge_sort(L)
+        color_merge_sort(R)
+
+        i = j = k = 0
+
+        while i < len(L) and j < len(R):
+            if L[i][0] < R[j][0]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
 
 def color_bubble_sort(arr):
     for i in arr:
@@ -48,6 +75,12 @@ def color_bubble_sort(arr):
                 temp = arr[j + 1]
                 arr[j + 1] = arr[j]
                 arr[j] = temp
+
+
+def md_sort(md_arr, length):
+    for i in range(length):
+        color_merge_sort(md_arr)
+    return md_arr
 
 
 def hls_pixelizer(rgb_pixel):
@@ -84,20 +117,21 @@ color_array = np.array(pixel_map, dtype=float)
 # print(color_array)
 # print()
 
-pixelconvert.rgb(color_array)
+for i in range(len(color_array)):
+    color_array[i] = hls_pixelizer(color_array[i])
 
 print("HLS: ")
 # print(color_array)
 # print()
 
-onedimension.merge_sort(color_array, 0)
-#for n in range(width):
-#    color_merge_sort(color_array[n*width:(n+1)*width])
+for n in range(width):
+    color_merge_sort(color_array[n*width:(n+1)*width])
 
 print("Sorted: ")
 # print(color_array)
 # print()
-pixelconvert.hls(color_array)
+for i in range(len(color_array)):
+    color_array[i] = rgb_pixelizer(color_array[i])
 
 print("Output : ")
 # print(color_array)

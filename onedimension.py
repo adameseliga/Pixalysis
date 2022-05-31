@@ -1,7 +1,9 @@
 import numpy as np
+#Image data retrieved from PIL is represented as a 2D array that behaves like a 1D array.
+#Thus, you don't have to call np.flatten() for these methods.
 
 
-def merge_sort(arr, v):  # Accepts the image data as it is given by PIL.
+def mergesort(arr, v):  #Accepts image data as a list and the value that of which it is sorting.
     # Must be represented as a tuple/array of HLS parameters.
 
     if len(arr) > 1:
@@ -10,8 +12,8 @@ def merge_sort(arr, v):  # Accepts the image data as it is given by PIL.
         L = np.array(arr[:mid])
         R = np.array(arr[mid:])
 
-        merge_sort(L, v)
-        merge_sort(R, v)
+        mergesort(L, v)
+        mergesort(R, v)
 
         i = j = k = 0
 
@@ -32,6 +34,8 @@ def merge_sort(arr, v):  # Accepts the image data as it is given by PIL.
             j += 1
             k += 1
 
+def insertionsort(arr, v):
+    pass
 
 if __name__ == '__main__':
-    print('1D sort test executed successfully')
+    print('1D sort test executed successfully from main')

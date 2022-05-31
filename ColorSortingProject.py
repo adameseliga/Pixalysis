@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib
 from PIL import Image
 from sys import getsizeof
 
