@@ -6,4 +6,6 @@ own risk.
 I have included some test images in the folder named "examples." When sorted, the
 result and original image will be saved in the upload folder. Because this
 in advertedly creates a duplicate of the original, make sure to delete it.
+I decided it wasn't important enough to spend time fixing, so I will fix this
+in a future release.
 -Adam
