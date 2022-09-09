@@ -4,8 +4,5 @@ script is ran, it will open the webpage on your default browser under
 a local port. This script is not fully developed and still contains bugs. Use at your
 own risk.
 I have included some test images in the folder named "examples." When sorted, the
-result and original image will be saved in the upload folder. Because this
-in advertedly creates a duplicate of the original, make sure to delete it.
-I decided it wasn't important enough to spend time fixing, so I will fix this
-in a future release.
+result and original image will be saved in the upload folder.
 -Adam
